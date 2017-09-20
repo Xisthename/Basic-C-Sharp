@@ -1,0 +1,6 @@
+c:\users\xisth\documents\visual studio 2015\Projects\Assignment1A\Assignment1A\bin\Debug\Assignment1A.exe.config
+c:\users\xisth\documents\visual studio 2015\Projects\Assignment1A\Assignment1A\bin\Debug\Assignment1A.exe
+c:\users\xisth\documents\visual studio 2015\Projects\Assignment1A\Assignment1A\bin\Debug\Assignment1A.pdb
+c:\users\xisth\documents\visual studio 2015\Projects\Assignment1A\Assignment1A\obj\Debug\Assignment1A.csprojResolveAssemblyReference.cache
+c:\users\xisth\documents\visual studio 2015\Projects\Assignment1A\Assignment1A\obj\Debug\Assignment1A.exe
+c:\users\xisth\documents\visual studio 2015\Projects\Assignment1A\Assignment1A\obj\Debug\Assignment1A.pdb
