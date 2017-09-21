@@ -16,8 +16,8 @@ namespace Assignment3
     /// </summary>
     public partial class MainForm : Form
     {
-        private FuelCalculator fuelCalc = new FuelCalculator();
-        private BodyMassIndex bmiCalc = new BodyMassIndex();
+        private FuelCalculator fuel = new FuelCalculator();
+        private BodyMassIndex bmi = new BodyMassIndex();
 
         public MainForm()
         {
@@ -36,7 +36,7 @@ namespace Assignment3
         {
             if (ReadInputFuel())
             {
-                if (fuelCalc.ValidateValues())
+                if (fuel.ValidateValues())
                 {
                     UpdateFuelGUI();
                 }
@@ -49,7 +49,7 @@ namespace Assignment3
         /// When an input can't be converted we tell the user that the input must be in digits
         /// Returns true if all input is converted to doubles otherwise false
         /// </summary>
-        /// <returns>Result</returns>
+        /// <returns>The result</returns>
         private bool ReadInputFuel()
         {
             double value;
@@ -57,7 +57,7 @@ namespace Assignment3
 
             if (double.TryParse(fuelCurrentKmTextBox.Text, out value))
             {
-                fuelCalc.SetCurrentReading(value);
+                fuel.SetCurrentReading(value);
             }
             else
             {
@@ -67,7 +67,7 @@ namespace Assignment3
 
             if (double.TryParse(fuelPreviousKmTextBox.Text, out value))
             {
-                fuelCalc.SetPreviousReading(value);
+                fuel.SetPreviousReading(value);
             }
             else
             {
@@ -77,7 +77,7 @@ namespace Assignment3
 
             if (double.TryParse(fuelCurrentLiterTextBox.Text, out value))
             {
-                fuelCalc.SetFuelAmount(value);
+                fuel.SetFuelAmount(value);
             }
             else
             {
@@ -87,7 +87,7 @@ namespace Assignment3
 
             if (double.TryParse(fuelPriceTextBox.Text, out value))
             {
-                fuelCalc.SetUnitPrice(value);
+                fuel.SetUnitPrice(value);
             }
             else
             {
@@ -102,11 +102,30 @@ namespace Assignment3
         /// </summary>
         private void UpdateFuelGUI()
         {
-            fuelKmPerLitLabel.Text = fuelCalc.CalcConsumptionKmPerLit().ToString();
-            fuelLitPerKmLabel.Text = fuelCalc.CalcConsumptionLitPerKm().ToString();
-            fuelLitPerMetricMileLabel.Text = fuelCalc.CalcConsumptionLitPerMetricMile().ToString();
-            fuelLitPerSweMilLabel.Text = fuelCalc.CalcConsumptionPerSwedishMil().ToString();
-            FuelCostLabel.Text = fuelCalc.CalcCostPerKm().ToString();
+            fuelKmPerLitLabel.Text = fuel.CalcConsumptionKmPerLit().ToString();
+            fuelLitPerKmLabel.Text = fuel.CalcConsumptionLitPerKm().ToString();
+            fuelLitPerMetricMileLabel.Text = fuel.CalcConsumptionLitPerMetricMile().ToString();
+            fuelLitPerSweMilLabel.Text = fuel.CalcConsumptionLitPerSwedishMil().ToString();
+            FuelCostLabel.Text = fuel.CalcCostPerKm().ToString();
+        }
+
+        /// <summary>
+        /// Changes the info depending on which one that are selected
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void bmiMetricRadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            if (bmiMetricRadioButton.Checked)
+            {
+                bmiHeightLabel.Text = "Height (cm)";
+                bmiWeightLabel.Text = "Weight (kg)";
+            }
+            else
+            {
+                bmiHeightLabel.Text = "Height (in)";
+                bmiWeightLabel.Text = "Weight (lb)";
+            }
         }
 
         /// <summary>
@@ -116,9 +135,49 @@ namespace Assignment3
         /// <param name="e"></param>
         private void bmiCalculateButton_Click(object sender, EventArgs e)
         {
+            if (ReadInputBMI())
+            {
+                if (bmi.ValidateValues())
+                {
+                    UpdateBMIGUI();
+                }
+            }
+        }
+
+        /// <summary>
+        /// /// Tries to convert BMI inputs to doubles
+        /// When an input can be converted we accses the bmi object and set in that value in corresponding set method
+        /// When an input can't be converted we tell the user that the input must be in digits
+        /// Returns true if all input is converted to doubles otherwise false
+        /// </summary>
+        /// <returns>The result</returns>
+        private bool ReadInputBMI()
+        {
+            double value;
+            bool result = true;
+
+            if (double.TryParse(bmiHeightTextBox.Text, out value))
+            {
+                bmi.SetHeight(value);
+            }
+            else
+            {
+                MessageBox.Show("The height must be digits only!", "Error Input", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                result = false;
+            }
+
+            if (double.TryParse(bmiWeightTextBox.Text, out value))
+            {
+                bmi.SetWeight(value);
+            }
+            else
+            {
+                MessageBox.Show("The weight must be digits only!", "Error Input", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                result = false;
+            }
             ReadName();
-            bmiCalc.SetUnit(bmiMetricRadioButton.Checked);
-            UpdateBMIGUI();
+            bmi.SetUnit(bmiMetricRadioButton.Checked);
+            return result;
         }
 
         /// <summary>
@@ -131,17 +190,22 @@ namespace Assignment3
         {
             if (bmiNameTextBox.Text.Trim().Equals(""))
             {
-                bmiCalc.SetName("No Name");
+                bmi.SetName("No Name");
             }
             else
             {
-                bmiCalc.SetName(bmiNameTextBox.Text);
+                bmi.SetName(bmiNameTextBox.Text);
             }
         }
 
+        /// <summary>
+        /// Updates the text of the BMI labels to the result calcualted and returned from the bmi object
+        /// </summary>
         private void UpdateBMIGUI()
         {
-            bmiNameLabel.Text = "Results for " + bmiCalc.GetName();
+            bmiBoxResults.Text = "Results for " + bmi.GetName();
+            bmiResultLabel.Text = bmi.CalcBMI().ToString();
+            bmiCategoryLabel.Text = bmi.CalcCategory();
         }
     }
 }

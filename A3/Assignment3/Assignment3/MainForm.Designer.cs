@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.fuelBox = new System.Windows.Forms.GroupBox();
-            this.fuelResults = new System.Windows.Forms.GroupBox();
+            this.fuelBoxResults = new System.Windows.Forms.GroupBox();
             this.fuelLitPerSweMilInfo = new System.Windows.Forms.Label();
             this.fuelLitPerMetricMileInfo = new System.Windows.Forms.Label();
             this.fuelCostInfo = new System.Windows.Forms.Label();
@@ -51,7 +51,10 @@
             this.fuelCurrentKmTextBox = new System.Windows.Forms.TextBox();
             this.fuelCurrentKmInfo = new System.Windows.Forms.Label();
             this.bmiBox = new System.Windows.Forms.GroupBox();
-            this.bmiResults = new System.Windows.Forms.GroupBox();
+            this.bmiUsRadioButton = new System.Windows.Forms.RadioButton();
+            this.bmiMetricRadioButton = new System.Windows.Forms.RadioButton();
+            this.bmiBoxResults = new System.Windows.Forms.GroupBox();
+            this.bmiNormalInfo = new System.Windows.Forms.Label();
             this.bmiCategoryLabel = new System.Windows.Forms.Label();
             this.bmiResultLabel = new System.Windows.Forms.Label();
             this.bmiCategoryInfo = new System.Windows.Forms.Label();
@@ -63,18 +66,15 @@
             this.bmiHeightTextBox = new System.Windows.Forms.TextBox();
             this.bmiNameTextBox = new System.Windows.Forms.TextBox();
             this.bmiNameLabel = new System.Windows.Forms.Label();
-            this.bmiMetricRadioButton = new System.Windows.Forms.RadioButton();
-            this.bmiUsRadioButton = new System.Windows.Forms.RadioButton();
-            this.bmiNormalInfo = new System.Windows.Forms.Label();
             this.fuelBox.SuspendLayout();
-            this.fuelResults.SuspendLayout();
+            this.fuelBoxResults.SuspendLayout();
             this.bmiBox.SuspendLayout();
-            this.bmiResults.SuspendLayout();
+            this.bmiBoxResults.SuspendLayout();
             this.SuspendLayout();
             // 
             // fuelBox
             // 
-            this.fuelBox.Controls.Add(this.fuelResults);
+            this.fuelBox.Controls.Add(this.fuelBoxResults);
             this.fuelBox.Controls.Add(this.fuelCalculateButton);
             this.fuelBox.Controls.Add(this.fuelPriceTextBox);
             this.fuelBox.Controls.Add(this.fuelPriceInfo);
@@ -93,24 +93,24 @@
             this.fuelBox.TabStop = false;
             this.fuelBox.Text = "Fuel";
             // 
-            // fuelResults
+            // fuelBoxResults
             // 
-            this.fuelResults.Controls.Add(this.fuelLitPerSweMilInfo);
-            this.fuelResults.Controls.Add(this.fuelLitPerMetricMileInfo);
-            this.fuelResults.Controls.Add(this.fuelCostInfo);
-            this.fuelResults.Controls.Add(this.FuelCostLabel);
-            this.fuelResults.Controls.Add(this.fuelLitPerSweMilLabel);
-            this.fuelResults.Controls.Add(this.fuelLitPerMetricMileLabel);
-            this.fuelResults.Controls.Add(this.fuelLitPerKmLabel);
-            this.fuelResults.Controls.Add(this.fuelKmPerLitLabel);
-            this.fuelResults.Controls.Add(this.fuelLitPerKmInfo);
-            this.fuelResults.Controls.Add(this.fuelKmPerLitInfo);
-            this.fuelResults.Location = new System.Drawing.Point(10, 208);
-            this.fuelResults.Name = "fuelResults";
-            this.fuelResults.Size = new System.Drawing.Size(480, 200);
-            this.fuelResults.TabIndex = 1;
-            this.fuelResults.TabStop = false;
-            this.fuelResults.Text = "Results";
+            this.fuelBoxResults.Controls.Add(this.fuelLitPerSweMilInfo);
+            this.fuelBoxResults.Controls.Add(this.fuelLitPerMetricMileInfo);
+            this.fuelBoxResults.Controls.Add(this.fuelCostInfo);
+            this.fuelBoxResults.Controls.Add(this.FuelCostLabel);
+            this.fuelBoxResults.Controls.Add(this.fuelLitPerSweMilLabel);
+            this.fuelBoxResults.Controls.Add(this.fuelLitPerMetricMileLabel);
+            this.fuelBoxResults.Controls.Add(this.fuelLitPerKmLabel);
+            this.fuelBoxResults.Controls.Add(this.fuelKmPerLitLabel);
+            this.fuelBoxResults.Controls.Add(this.fuelLitPerKmInfo);
+            this.fuelBoxResults.Controls.Add(this.fuelKmPerLitInfo);
+            this.fuelBoxResults.Location = new System.Drawing.Point(10, 208);
+            this.fuelBoxResults.Name = "fuelBoxResults";
+            this.fuelBoxResults.Size = new System.Drawing.Size(480, 200);
+            this.fuelBoxResults.TabIndex = 1;
+            this.fuelBoxResults.TabStop = false;
+            this.fuelBoxResults.Text = "Results";
             // 
             // fuelLitPerSweMilInfo
             // 
@@ -278,7 +278,7 @@
             // 
             this.bmiBox.Controls.Add(this.bmiUsRadioButton);
             this.bmiBox.Controls.Add(this.bmiMetricRadioButton);
-            this.bmiBox.Controls.Add(this.bmiResults);
+            this.bmiBox.Controls.Add(this.bmiBoxResults);
             this.bmiBox.Controls.Add(this.bmiCalculateButton);
             this.bmiBox.Controls.Add(this.bmiWeightTextBox);
             this.bmiBox.Controls.Add(this.bmiWeightLabel);
@@ -295,19 +295,52 @@
             this.bmiBox.TabStop = false;
             this.bmiBox.Text = "BMI";
             // 
-            // bmiResults
+            // bmiUsRadioButton
             // 
-            this.bmiResults.Controls.Add(this.bmiNormalInfo);
-            this.bmiResults.Controls.Add(this.bmiCategoryLabel);
-            this.bmiResults.Controls.Add(this.bmiResultLabel);
-            this.bmiResults.Controls.Add(this.bmiCategoryInfo);
-            this.bmiResults.Controls.Add(this.bmiResultInfo);
-            this.bmiResults.Location = new System.Drawing.Point(10, 208);
-            this.bmiResults.Name = "bmiResults";
-            this.bmiResults.Size = new System.Drawing.Size(405, 200);
-            this.bmiResults.TabIndex = 1;
-            this.bmiResults.TabStop = false;
-            this.bmiResults.Text = "Results";
+            this.bmiUsRadioButton.AutoSize = true;
+            this.bmiUsRadioButton.Location = new System.Drawing.Point(225, 98);
+            this.bmiUsRadioButton.Name = "bmiUsRadioButton";
+            this.bmiUsRadioButton.Size = new System.Drawing.Size(156, 24);
+            this.bmiUsRadioButton.TabIndex = 10;
+            this.bmiUsRadioButton.Text = "Us Unit (lb, inch)";
+            this.bmiUsRadioButton.UseVisualStyleBackColor = true;
+            // 
+            // bmiMetricRadioButton
+            // 
+            this.bmiMetricRadioButton.AutoSize = true;
+            this.bmiMetricRadioButton.Checked = true;
+            this.bmiMetricRadioButton.Location = new System.Drawing.Point(225, 63);
+            this.bmiMetricRadioButton.Name = "bmiMetricRadioButton";
+            this.bmiMetricRadioButton.Size = new System.Drawing.Size(178, 24);
+            this.bmiMetricRadioButton.TabIndex = 9;
+            this.bmiMetricRadioButton.TabStop = true;
+            this.bmiMetricRadioButton.Text = "Metric Unit (kg, cm)";
+            this.bmiMetricRadioButton.UseVisualStyleBackColor = true;
+            this.bmiMetricRadioButton.CheckedChanged += new System.EventHandler(this.bmiMetricRadioButton_CheckedChanged);
+            // 
+            // bmiBoxResults
+            // 
+            this.bmiBoxResults.Controls.Add(this.bmiNormalInfo);
+            this.bmiBoxResults.Controls.Add(this.bmiCategoryLabel);
+            this.bmiBoxResults.Controls.Add(this.bmiResultLabel);
+            this.bmiBoxResults.Controls.Add(this.bmiCategoryInfo);
+            this.bmiBoxResults.Controls.Add(this.bmiResultInfo);
+            this.bmiBoxResults.Location = new System.Drawing.Point(10, 208);
+            this.bmiBoxResults.Name = "bmiBoxResults";
+            this.bmiBoxResults.Size = new System.Drawing.Size(405, 200);
+            this.bmiBoxResults.TabIndex = 1;
+            this.bmiBoxResults.TabStop = false;
+            this.bmiBoxResults.Text = "Results";
+            // 
+            // bmiNormalInfo
+            // 
+            this.bmiNormalInfo.AutoSize = true;
+            this.bmiNormalInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bmiNormalInfo.Location = new System.Drawing.Point(7, 138);
+            this.bmiNormalInfo.Name = "bmiNormalInfo";
+            this.bmiNormalInfo.Size = new System.Drawing.Size(287, 20);
+            this.bmiNormalInfo.TabIndex = 11;
+            this.bmiNormalInfo.Text = "Normal BMI is between 18.5 and 24.9";
             // 
             // bmiCategoryLabel
             // 
@@ -404,43 +437,11 @@
             this.bmiNameLabel.TabIndex = 0;
             this.bmiNameLabel.Text = "Name";
             // 
-            // bmiMetricRadioButton
-            // 
-            this.bmiMetricRadioButton.AutoSize = true;
-            this.bmiMetricRadioButton.Checked = true;
-            this.bmiMetricRadioButton.Location = new System.Drawing.Point(225, 63);
-            this.bmiMetricRadioButton.Name = "bmiMetricRadioButton";
-            this.bmiMetricRadioButton.Size = new System.Drawing.Size(178, 24);
-            this.bmiMetricRadioButton.TabIndex = 9;
-            this.bmiMetricRadioButton.TabStop = true;
-            this.bmiMetricRadioButton.Text = "Metric Unit (kg, cm)";
-            this.bmiMetricRadioButton.UseVisualStyleBackColor = true;
-            // 
-            // bmiUsRadioButton
-            // 
-            this.bmiUsRadioButton.AutoSize = true;
-            this.bmiUsRadioButton.Location = new System.Drawing.Point(225, 98);
-            this.bmiUsRadioButton.Name = "bmiUsRadioButton";
-            this.bmiUsRadioButton.Size = new System.Drawing.Size(156, 24);
-            this.bmiUsRadioButton.TabIndex = 10;
-            this.bmiUsRadioButton.Text = "Us Unit (lb, inch)";
-            this.bmiUsRadioButton.UseVisualStyleBackColor = true;
-            // 
-            // bmiNormalInfo
-            // 
-            this.bmiNormalInfo.AutoSize = true;
-            this.bmiNormalInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bmiNormalInfo.Location = new System.Drawing.Point(7, 138);
-            this.bmiNormalInfo.Name = "bmiNormalInfo";
-            this.bmiNormalInfo.Size = new System.Drawing.Size(287, 20);
-            this.bmiNormalInfo.TabIndex = 11;
-            this.bmiNormalInfo.Text = "Normal BMI is between 18.5 and 24.9";
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(956, 732);
+            this.ClientSize = new System.Drawing.Size(956, 851);
             this.Controls.Add(this.bmiBox);
             this.Controls.Add(this.fuelBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -450,12 +451,12 @@
             this.Text = "Universal calculator";
             this.fuelBox.ResumeLayout(false);
             this.fuelBox.PerformLayout();
-            this.fuelResults.ResumeLayout(false);
-            this.fuelResults.PerformLayout();
+            this.fuelBoxResults.ResumeLayout(false);
+            this.fuelBoxResults.PerformLayout();
             this.bmiBox.ResumeLayout(false);
             this.bmiBox.PerformLayout();
-            this.bmiResults.ResumeLayout(false);
-            this.bmiResults.PerformLayout();
+            this.bmiBoxResults.ResumeLayout(false);
+            this.bmiBoxResults.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -471,7 +472,7 @@
         private System.Windows.Forms.TextBox fuelPreviousKmTextBox;
         private System.Windows.Forms.TextBox fuelCurrentKmTextBox;
         private System.Windows.Forms.Label fuelCurrentKmInfo;
-        private System.Windows.Forms.GroupBox fuelResults;
+        private System.Windows.Forms.GroupBox fuelBoxResults;
         private System.Windows.Forms.Button fuelCalculateButton;
         private System.Windows.Forms.Label fuelKmPerLitInfo;
         private System.Windows.Forms.Label fuelLitPerKmInfo;
@@ -484,7 +485,7 @@
         private System.Windows.Forms.Label fuelLitPerSweMilInfo;
         private System.Windows.Forms.Label fuelLitPerMetricMileInfo;
         private System.Windows.Forms.GroupBox bmiBox;
-        private System.Windows.Forms.GroupBox bmiResults;
+        private System.Windows.Forms.GroupBox bmiBoxResults;
         private System.Windows.Forms.Label bmiCategoryLabel;
         private System.Windows.Forms.Label bmiResultLabel;
         private System.Windows.Forms.Label bmiCategoryInfo;

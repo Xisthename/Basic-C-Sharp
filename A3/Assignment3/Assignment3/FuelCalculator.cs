@@ -57,6 +57,12 @@ namespace Assignment3
             this.unitPrice = unitPrice;
         }
 
+        /// <summary>
+        /// Validates the input values with corresponding conditions 
+        /// If a condition is false we let the user know what was wrong and the method returns false
+        /// If ALL conditions are true we return true
+        /// </summary>
+        /// <returns>result</returns>
         public bool ValidateValues()
         {
             bool result = true;
@@ -87,47 +93,83 @@ namespace Assignment3
             return result;
         }
 
+        /// <summary>
+        /// Calculates the fuel consumption of km per liter
+        /// </summary>
+        /// <returns>The value of the consumption</returns>
         public double CalcConsumptionKmPerLit()
         {
             return (currentReading - previousReading) / fuelAmount;
         }
 
+        /// <summary>
+        /// Calculates the fuel consumption of liter per km
+        /// </summary>
+        /// <returns>The value of the consumption</returns>
         public double CalcConsumptionLitPerKm()
         {
             return fuelAmount / (currentReading - previousReading);
         }
 
+        /// <summary>
+        /// Calculates the fuel consumption of liter per metric mile
+        /// </summary>
+        /// <returns>The value of the consumption</returns>
         public double CalcConsumptionLitPerMetricMile()
         {
             const double kmToMileFactor = 0.621371192;
             return CalcConsumptionLitPerKm() / kmToMileFactor;
         }
 
-        public double CalcConsumptionPerSwedishMil()
+        /// <summary>
+        /// Calculates the fuel consumption of liter per swedish mil
+        /// </summary>
+        /// <returns>The value of the consumption</returns>
+        public double CalcConsumptionLitPerSwedishMil()
         {
             return CalcConsumptionLitPerKm() * 10;
         }
 
+        /// <summary>
+        /// Calculates the cost per km
+        /// </summary>
+        /// <returns>The cost value</returns>
         public double CalcCostPerKm()
         {
             return CalcConsumptionLitPerKm() * unitPrice;
         }
 
+        /// <summary>
+        /// Simple get method that returns the value of an instance variable
+        /// </summary>
+        /// <returns>currentReading</returns>
         public double GetCurrentReading()
         {
             return currentReading;
         }
 
+        /// <summary>
+        /// Simple get method that returns the value of an instance variable
+        /// </summary>
+        /// <returns>previousReading</returns>
         public double GetPreviousReading()
         {
             return previousReading;
         }
 
+        /// <summary>
+        /// Simple get method that returns the value of an instance variable
+        /// </summary>
+        /// <returns>fuelAmount</returns>
         public double GetFuelAmount()
         {
             return fuelAmount;
         }
 
+        /// <summary>
+        /// Simple get method that returns the value of an instance variable
+        /// </summary>
+        /// <returns>unitPrice</returns>
         public double GetUnitPrice()
         {
             return unitPrice;
