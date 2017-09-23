@@ -16,8 +16,12 @@ namespace Assignment3
     /// </summary>
     public partial class MainForm : Form
     {
+        /// <summary>
+        /// Creating and declaring some objects 
+        /// </summary>
         private FuelCalculator fuel = new FuelCalculator();
         private BodyMassIndex bmi = new BodyMassIndex();
+        private BasalMetabolicRate bmr = new BasalMetabolicRate();
 
         public MainForm()
         {
@@ -153,10 +157,10 @@ namespace Assignment3
         /// <returns>The result</returns>
         private bool ReadInputBMI()
         {
-            double value;
+            float value;
             bool result = true;
 
-            if (double.TryParse(bmiHeightTextBox.Text, out value))
+            if (float.TryParse(bmiHeightTextBox.Text, out value))
             {
                 bmi.SetHeight(value);
             }
@@ -166,7 +170,7 @@ namespace Assignment3
                 result = false;
             }
 
-            if (double.TryParse(bmiWeightTextBox.Text, out value))
+            if (float.TryParse(bmiWeightTextBox.Text, out value))
             {
                 bmi.SetWeight(value);
             }
@@ -204,7 +208,7 @@ namespace Assignment3
         private void UpdateBMIGUI()
         {
             bmiBoxResults.Text = "Results for " + bmi.GetName();
-            bmiResultLabel.Text = bmi.CalcBMI().ToString();
+            bmiResultLabel.Text = bmi.CalcBMI().ToString("0.00");
             bmiCategoryLabel.Text = bmi.CalcCategory();
         }
     }

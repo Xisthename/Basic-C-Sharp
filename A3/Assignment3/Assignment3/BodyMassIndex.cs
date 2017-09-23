@@ -15,8 +15,8 @@ namespace Assignment3
     {
         private String name;
         private bool metricUnits;
-        private double height;
-        private double weight;
+        private float height;
+        private float weight;
 
         /// <summary>
         /// Simple set method that takes in a value and saves that value into a instance variable
@@ -40,7 +40,7 @@ namespace Assignment3
         /// Simple set method that takes in a value and saves that value into a instance variable
         /// </summary>
         /// <param name="height"></param>
-        public void SetHeight(double height)
+        public void SetHeight(float height)
         {
             this.height = height;
         }
@@ -49,7 +49,7 @@ namespace Assignment3
         /// Simple set method that takes in a value and saves that value into a instance variable
         /// </summary>
         /// <param name="weight"></param>
-        public void SetWeight(double weight)
+        public void SetWeight(float weight)
         {
             this.weight = weight;
         }
@@ -78,53 +78,49 @@ namespace Assignment3
             return result;
         }
 
-        //BMI = weight in kg / height2(in m2) (Metric Units)
-        //BMI = 703.0 *·weight(in lb) / height2(in inch2) (U.S.Units)
-
         /// <summary>
-        /// Calcualtes you BMI in Metric units or U.S units depending on the boolean metricUnits
-        /// Rounds of the value to 1 decimal
+        /// Calcualtes your BMI in Metric units or U.S units depending on the boolean metricUnits
         /// </summary>
         /// <returns>The calculated BMI value</returns>
-        public double CalcBMI()
+        public float CalcBMI()
         {
             if (metricUnits)
             {
-                double heightCmToMeter = (height / 100);
-                return Math.Round(weight / (heightCmToMeter * heightCmToMeter), 1);
+                float heightCmToMeter = (height / 100);
+                return (weight / (heightCmToMeter * heightCmToMeter));
             }
             else
             {
-                return Math.Round((703.0 * weight) / (height * height), 1);
+                return ((float) 703.0 * weight) / (height * height);
             }
         }
 
         /// <summary>
-        /// Tries to find a category acorrding to the BMI value of a person
+        /// Tries to find a category acorrding to the BMI value
         /// </summary>
         /// <returns>A category</returns>
         public String CalcCategory()
         {
-            double bmiValue = CalcBMI();
+            float bmiValue = CalcBMI();
             String category = "Error no category found";
 
             if (bmiValue < 18.5)
             {
                 category = "Underweight";
             }
-            else if (bmiValue >= 18.5 && bmiValue <= 24.9)
+            else if (bmiValue >= 18.5 && bmiValue < 25)
             {
                 category = "Normal weight";
             }
-            else if (bmiValue >= 25.0 && bmiValue <= 29.9)
+            else if (bmiValue >= 25.0 && bmiValue < 30)
             {
                 category = "Overweight (Pre-obesity)";
             }
-            else if (bmiValue >= 30.0 && bmiValue <= 34.9)
+            else if (bmiValue >= 30.0 && bmiValue < 35)
             {
                 category = "Obesity class I";
             }
-            else if (bmiValue >= 35.0 && bmiValue <= 39.9)
+            else if (bmiValue >= 35.0 && bmiValue <= 40)
             {
                 category = "Obesity class II";
             }

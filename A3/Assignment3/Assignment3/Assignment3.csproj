@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BasalMetabolicRate.cs" />
     <Compile Include="BodyMassIndex.cs" />
     <Compile Include="FuelCalculator.cs" />
     <Compile Include="MainForm.cs">
