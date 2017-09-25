@@ -61,32 +61,33 @@
             this.bmiResultInfo = new System.Windows.Forms.Label();
             this.bmiCalculateButton = new System.Windows.Forms.Button();
             this.bmiWeightTextBox = new System.Windows.Forms.TextBox();
-            this.bmiWeightLabel = new System.Windows.Forms.Label();
-            this.bmiHeightLabel = new System.Windows.Forms.Label();
+            this.bmiWeightInfo = new System.Windows.Forms.Label();
+            this.bmiHeightInfo = new System.Windows.Forms.Label();
             this.bmiHeightTextBox = new System.Windows.Forms.TextBox();
             this.bmiNameTextBox = new System.Windows.Forms.TextBox();
-            this.bmiNameLabel = new System.Windows.Forms.Label();
+            this.bmiNameInfo = new System.Windows.Forms.Label();
             this.bmrBox = new System.Windows.Forms.GroupBox();
+            this.bmrListView = new System.Windows.Forms.ListView();
+            this.bmrSelectedItemLabel = new System.Windows.Forms.Label();
+            this.bmrUnselectButton = new System.Windows.Forms.Button();
+            this.bmrAgeTextBox = new System.Windows.Forms.TextBox();
             this.bmrMaleRadioButton = new System.Windows.Forms.RadioButton();
             this.bmrFemaleRadioButton = new System.Windows.Forms.RadioButton();
-            this.bmrActivityBox = new System.Windows.Forms.GroupBox();
             this.bmrCalculateButton = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
-            this.bmrAgeTextBox = new System.Windows.Forms.TextBox();
-            this.bmrSedentaryRadioButton = new System.Windows.Forms.RadioButton();
-            this.bmrLightlyRradioButton = new System.Windows.Forms.RadioButton();
-            this.bmrModeratelyRadioButton = new System.Windows.Forms.RadioButton();
-            this.bmrVeryRadioButton = new System.Windows.Forms.RadioButton();
-            this.bmrExtraRadioButton = new System.Windows.Forms.RadioButton();
-            this.bmrUnselectButton = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.bmrListView = new System.Windows.Forms.ListView();
+            this.bmrActivityComboBox = new System.Windows.Forms.ComboBox();
+            this.bmrActivityLevelInfo = new System.Windows.Forms.Label();
+            this.bmrWeightTextBox = new System.Windows.Forms.TextBox();
+            this.bmrWeightInfo = new System.Windows.Forms.Label();
+            this.bmrHeightInfo = new System.Windows.Forms.Label();
+            this.bmrHeightTextBox = new System.Windows.Forms.TextBox();
+            this.bmrNameTextBox = new System.Windows.Forms.TextBox();
+            this.bmrNameInfo = new System.Windows.Forms.Label();
             this.fuelBox.SuspendLayout();
             this.fuelBoxResults.SuspendLayout();
             this.bmiBox.SuspendLayout();
             this.bmiBoxResults.SuspendLayout();
             this.bmrBox.SuspendLayout();
-            this.bmrActivityBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // fuelBox
@@ -221,7 +222,7 @@
             this.fuelCalculateButton.Location = new System.Drawing.Point(110, 163);
             this.fuelCalculateButton.Name = "fuelCalculateButton";
             this.fuelCalculateButton.Size = new System.Drawing.Size(220, 40);
-            this.fuelCalculateButton.TabIndex = 8;
+            this.fuelCalculateButton.TabIndex = 5;
             this.fuelCalculateButton.Text = "Calculate";
             this.fuelCalculateButton.UseVisualStyleBackColor = true;
             this.fuelCalculateButton.Click += new System.EventHandler(this.fuelCalculateButton_Click);
@@ -231,7 +232,7 @@
             this.fuelPriceTextBox.Location = new System.Drawing.Point(328, 130);
             this.fuelPriceTextBox.Name = "fuelPriceTextBox";
             this.fuelPriceTextBox.Size = new System.Drawing.Size(155, 27);
-            this.fuelPriceTextBox.TabIndex = 7;
+            this.fuelPriceTextBox.TabIndex = 4;
             // 
             // fuelPriceInfo
             // 
@@ -247,7 +248,7 @@
             this.fuelCurrentLiterTextBox.Location = new System.Drawing.Point(328, 97);
             this.fuelCurrentLiterTextBox.Name = "fuelCurrentLiterTextBox";
             this.fuelCurrentLiterTextBox.Size = new System.Drawing.Size(155, 27);
-            this.fuelCurrentLiterTextBox.TabIndex = 5;
+            this.fuelCurrentLiterTextBox.TabIndex = 3;
             // 
             // fuelCurrentLiterInfo
             // 
@@ -298,11 +299,11 @@
             this.bmiBox.Controls.Add(this.bmiBoxResults);
             this.bmiBox.Controls.Add(this.bmiCalculateButton);
             this.bmiBox.Controls.Add(this.bmiWeightTextBox);
-            this.bmiBox.Controls.Add(this.bmiWeightLabel);
-            this.bmiBox.Controls.Add(this.bmiHeightLabel);
+            this.bmiBox.Controls.Add(this.bmiWeightInfo);
+            this.bmiBox.Controls.Add(this.bmiHeightInfo);
             this.bmiBox.Controls.Add(this.bmiHeightTextBox);
             this.bmiBox.Controls.Add(this.bmiNameTextBox);
-            this.bmiBox.Controls.Add(this.bmiNameLabel);
+            this.bmiBox.Controls.Add(this.bmiNameInfo);
             this.bmiBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bmiBox.ForeColor = System.Drawing.SystemColors.ControlText;
             this.bmiBox.Location = new System.Drawing.Point(520, 12);
@@ -318,7 +319,7 @@
             this.bmiUsRadioButton.Location = new System.Drawing.Point(225, 98);
             this.bmiUsRadioButton.Name = "bmiUsRadioButton";
             this.bmiUsRadioButton.Size = new System.Drawing.Size(156, 24);
-            this.bmiUsRadioButton.TabIndex = 10;
+            this.bmiUsRadioButton.TabIndex = 9;
             this.bmiUsRadioButton.Text = "Us Unit (lb, inch)";
             this.bmiUsRadioButton.UseVisualStyleBackColor = true;
             // 
@@ -329,7 +330,7 @@
             this.bmiMetricRadioButton.Location = new System.Drawing.Point(225, 63);
             this.bmiMetricRadioButton.Name = "bmiMetricRadioButton";
             this.bmiMetricRadioButton.Size = new System.Drawing.Size(178, 24);
-            this.bmiMetricRadioButton.TabIndex = 9;
+            this.bmiMetricRadioButton.TabIndex = 8;
             this.bmiMetricRadioButton.TabStop = true;
             this.bmiMetricRadioButton.Text = "Metric Unit (kg, cm)";
             this.bmiMetricRadioButton.UseVisualStyleBackColor = true;
@@ -400,7 +401,7 @@
             this.bmiCalculateButton.Location = new System.Drawing.Point(95, 163);
             this.bmiCalculateButton.Name = "bmiCalculateButton";
             this.bmiCalculateButton.Size = new System.Drawing.Size(220, 40);
-            this.bmiCalculateButton.TabIndex = 8;
+            this.bmiCalculateButton.TabIndex = 10;
             this.bmiCalculateButton.Text = "Calculate";
             this.bmiCalculateButton.UseVisualStyleBackColor = true;
             this.bmiCalculateButton.Click += new System.EventHandler(this.bmiCalculateButton_Click);
@@ -412,23 +413,23 @@
             this.bmiWeightTextBox.Size = new System.Drawing.Size(100, 27);
             this.bmiWeightTextBox.TabIndex = 5;
             // 
-            // bmiWeightLabel
+            // bmiWeightInfo
             // 
-            this.bmiWeightLabel.AutoSize = true;
-            this.bmiWeightLabel.Location = new System.Drawing.Point(6, 100);
-            this.bmiWeightLabel.Name = "bmiWeightLabel";
-            this.bmiWeightLabel.Size = new System.Drawing.Size(95, 20);
-            this.bmiWeightLabel.TabIndex = 4;
-            this.bmiWeightLabel.Text = "Weight (kg)";
+            this.bmiWeightInfo.AutoSize = true;
+            this.bmiWeightInfo.Location = new System.Drawing.Point(6, 100);
+            this.bmiWeightInfo.Name = "bmiWeightInfo";
+            this.bmiWeightInfo.Size = new System.Drawing.Size(95, 20);
+            this.bmiWeightInfo.TabIndex = 4;
+            this.bmiWeightInfo.Text = "Weight (kg)";
             // 
-            // bmiHeightLabel
+            // bmiHeightInfo
             // 
-            this.bmiHeightLabel.AutoSize = true;
-            this.bmiHeightLabel.Location = new System.Drawing.Point(6, 65);
-            this.bmiHeightLabel.Name = "bmiHeightLabel";
-            this.bmiHeightLabel.Size = new System.Drawing.Size(98, 20);
-            this.bmiHeightLabel.TabIndex = 3;
-            this.bmiHeightLabel.Text = "Height (cm)";
+            this.bmiHeightInfo.AutoSize = true;
+            this.bmiHeightInfo.Location = new System.Drawing.Point(6, 65);
+            this.bmiHeightInfo.Name = "bmiHeightInfo";
+            this.bmiHeightInfo.Size = new System.Drawing.Size(98, 20);
+            this.bmiHeightInfo.TabIndex = 3;
+            this.bmiHeightInfo.Text = "Height (cm)";
             // 
             // bmiHeightTextBox
             // 
@@ -444,43 +445,87 @@
             this.bmiNameTextBox.Size = new System.Drawing.Size(296, 27);
             this.bmiNameTextBox.TabIndex = 1;
             // 
-            // bmiNameLabel
+            // bmiNameInfo
             // 
-            this.bmiNameLabel.AutoSize = true;
-            this.bmiNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bmiNameLabel.Location = new System.Drawing.Point(6, 33);
-            this.bmiNameLabel.Name = "bmiNameLabel";
-            this.bmiNameLabel.Size = new System.Drawing.Size(53, 20);
-            this.bmiNameLabel.TabIndex = 0;
-            this.bmiNameLabel.Text = "Name";
+            this.bmiNameInfo.AutoSize = true;
+            this.bmiNameInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bmiNameInfo.Location = new System.Drawing.Point(6, 33);
+            this.bmiNameInfo.Name = "bmiNameInfo";
+            this.bmiNameInfo.Size = new System.Drawing.Size(53, 20);
+            this.bmiNameInfo.TabIndex = 0;
+            this.bmiNameInfo.Text = "Name";
             // 
             // bmrBox
             // 
+            this.bmrBox.Controls.Add(this.bmrWeightTextBox);
+            this.bmrBox.Controls.Add(this.bmrWeightInfo);
+            this.bmrBox.Controls.Add(this.bmrActivityLevelInfo);
+            this.bmrBox.Controls.Add(this.bmrHeightInfo);
+            this.bmrBox.Controls.Add(this.bmrActivityComboBox);
+            this.bmrBox.Controls.Add(this.bmrHeightTextBox);
             this.bmrBox.Controls.Add(this.bmrListView);
-            this.bmrBox.Controls.Add(this.label1);
+            this.bmrBox.Controls.Add(this.bmrNameTextBox);
+            this.bmrBox.Controls.Add(this.bmrSelectedItemLabel);
+            this.bmrBox.Controls.Add(this.bmrNameInfo);
             this.bmrBox.Controls.Add(this.bmrUnselectButton);
             this.bmrBox.Controls.Add(this.bmrAgeTextBox);
             this.bmrBox.Controls.Add(this.bmrMaleRadioButton);
             this.bmrBox.Controls.Add(this.bmrFemaleRadioButton);
-            this.bmrBox.Controls.Add(this.bmrActivityBox);
             this.bmrBox.Controls.Add(this.bmrCalculateButton);
             this.bmrBox.Controls.Add(this.label7);
             this.bmrBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bmrBox.ForeColor = System.Drawing.SystemColors.ControlText;
             this.bmrBox.Location = new System.Drawing.Point(12, 433);
             this.bmrBox.Name = "bmrBox";
-            this.bmrBox.Size = new System.Drawing.Size(933, 397);
+            this.bmrBox.Size = new System.Drawing.Size(933, 379);
             this.bmrBox.TabIndex = 11;
             this.bmrBox.TabStop = false;
             this.bmrBox.Text = "BMR";
             // 
+            // bmrListView
+            // 
+            this.bmrListView.Location = new System.Drawing.Point(332, 24);
+            this.bmrListView.MultiSelect = false;
+            this.bmrListView.Name = "bmrListView";
+            this.bmrListView.Size = new System.Drawing.Size(590, 340);
+            this.bmrListView.TabIndex = 12;
+            this.bmrListView.UseCompatibleStateImageBehavior = false;
+            this.bmrListView.View = System.Windows.Forms.View.List;
+            this.bmrListView.SelectedIndexChanged += new System.EventHandler(this.bmrListView_SelectedIndexChanged);
+            // 
+            // bmrSelectedItemLabel
+            // 
+            this.bmrSelectedItemLabel.AutoSize = true;
+            this.bmrSelectedItemLabel.Location = new System.Drawing.Point(2, 336);
+            this.bmrSelectedItemLabel.Name = "bmrSelectedItemLabel";
+            this.bmrSelectedItemLabel.Size = new System.Drawing.Size(116, 20);
+            this.bmrSelectedItemLabel.TabIndex = 14;
+            this.bmrSelectedItemLabel.Text = "Selected item:";
+            // 
+            // bmrUnselectButton
+            // 
+            this.bmrUnselectButton.Location = new System.Drawing.Point(186, 329);
+            this.bmrUnselectButton.Name = "bmrUnselectButton";
+            this.bmrUnselectButton.Size = new System.Drawing.Size(140, 35);
+            this.bmrUnselectButton.TabIndex = 9;
+            this.bmrUnselectButton.Text = "Unselect";
+            this.bmrUnselectButton.UseVisualStyleBackColor = true;
+            this.bmrUnselectButton.Click += new System.EventHandler(this.bmrUnselectButton_Click);
+            // 
+            // bmrAgeTextBox
+            // 
+            this.bmrAgeTextBox.Location = new System.Drawing.Point(115, 123);
+            this.bmrAgeTextBox.Name = "bmrAgeTextBox";
+            this.bmrAgeTextBox.Size = new System.Drawing.Size(100, 27);
+            this.bmrAgeTextBox.TabIndex = 4;
+            // 
             // bmrMaleRadioButton
             // 
             this.bmrMaleRadioButton.AutoSize = true;
-            this.bmrMaleRadioButton.Location = new System.Drawing.Point(106, 26);
+            this.bmrMaleRadioButton.Location = new System.Drawing.Point(106, 164);
             this.bmrMaleRadioButton.Name = "bmrMaleRadioButton";
             this.bmrMaleRadioButton.Size = new System.Drawing.Size(66, 24);
-            this.bmrMaleRadioButton.TabIndex = 10;
+            this.bmrMaleRadioButton.TabIndex = 6;
             this.bmrMaleRadioButton.Text = "Male";
             this.bmrMaleRadioButton.UseVisualStyleBackColor = true;
             // 
@@ -488,135 +533,105 @@
             // 
             this.bmrFemaleRadioButton.AutoSize = true;
             this.bmrFemaleRadioButton.Checked = true;
-            this.bmrFemaleRadioButton.Location = new System.Drawing.Point(6, 26);
+            this.bmrFemaleRadioButton.Location = new System.Drawing.Point(6, 164);
             this.bmrFemaleRadioButton.Name = "bmrFemaleRadioButton";
             this.bmrFemaleRadioButton.Size = new System.Drawing.Size(85, 24);
-            this.bmrFemaleRadioButton.TabIndex = 9;
+            this.bmrFemaleRadioButton.TabIndex = 5;
             this.bmrFemaleRadioButton.TabStop = true;
             this.bmrFemaleRadioButton.Text = "Female";
             this.bmrFemaleRadioButton.UseVisualStyleBackColor = true;
             // 
-            // bmrActivityBox
-            // 
-            this.bmrActivityBox.Controls.Add(this.bmrExtraRadioButton);
-            this.bmrActivityBox.Controls.Add(this.bmrVeryRadioButton);
-            this.bmrActivityBox.Controls.Add(this.bmrModeratelyRadioButton);
-            this.bmrActivityBox.Controls.Add(this.bmrLightlyRradioButton);
-            this.bmrActivityBox.Controls.Add(this.bmrSedentaryRadioButton);
-            this.bmrActivityBox.Location = new System.Drawing.Point(6, 96);
-            this.bmrActivityBox.Name = "bmrActivityBox";
-            this.bmrActivityBox.Size = new System.Drawing.Size(320, 200);
-            this.bmrActivityBox.TabIndex = 1;
-            this.bmrActivityBox.TabStop = false;
-            this.bmrActivityBox.Text = "Activity level per week";
-            // 
             // bmrCalculateButton
             // 
-            this.bmrCalculateButton.Location = new System.Drawing.Point(6, 302);
+            this.bmrCalculateButton.Location = new System.Drawing.Point(6, 283);
             this.bmrCalculateButton.Name = "bmrCalculateButton";
             this.bmrCalculateButton.Size = new System.Drawing.Size(320, 40);
             this.bmrCalculateButton.TabIndex = 8;
             this.bmrCalculateButton.Text = "Calculate";
             this.bmrCalculateButton.UseVisualStyleBackColor = true;
+            this.bmrCalculateButton.Click += new System.EventHandler(this.bmrCalculateButton_Click);
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(2, 66);
+            this.label7.Location = new System.Drawing.Point(2, 126);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(38, 20);
             this.label7.TabIndex = 3;
             this.label7.Text = "Age";
             // 
-            // bmrAgeTextBox
+            // bmrActivityComboBox
             // 
-            this.bmrAgeTextBox.Location = new System.Drawing.Point(46, 63);
-            this.bmrAgeTextBox.Name = "bmrAgeTextBox";
-            this.bmrAgeTextBox.Size = new System.Drawing.Size(126, 27);
-            this.bmrAgeTextBox.TabIndex = 11;
+            this.bmrActivityComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.bmrActivityComboBox.FormattingEnabled = true;
+            this.bmrActivityComboBox.Location = new System.Drawing.Point(6, 240);
+            this.bmrActivityComboBox.Name = "bmrActivityComboBox";
+            this.bmrActivityComboBox.Size = new System.Drawing.Size(320, 28);
+            this.bmrActivityComboBox.TabIndex = 7;
             // 
-            // bmrSedentaryRadioButton
+            // bmrActivityLevelInfo
             // 
-            this.bmrSedentaryRadioButton.AutoSize = true;
-            this.bmrSedentaryRadioButton.Checked = true;
-            this.bmrSedentaryRadioButton.Location = new System.Drawing.Point(21, 36);
-            this.bmrSedentaryRadioButton.Name = "bmrSedentaryRadioButton";
-            this.bmrSedentaryRadioButton.Size = new System.Drawing.Size(264, 24);
-            this.bmrSedentaryRadioButton.TabIndex = 12;
-            this.bmrSedentaryRadioButton.Text = "Sedentary (little or no exercise)";
-            this.bmrSedentaryRadioButton.UseVisualStyleBackColor = true;
+            this.bmrActivityLevelInfo.AutoSize = true;
+            this.bmrActivityLevelInfo.Location = new System.Drawing.Point(2, 207);
+            this.bmrActivityLevelInfo.Name = "bmrActivityLevelInfo";
+            this.bmrActivityLevelInfo.Size = new System.Drawing.Size(174, 20);
+            this.bmrActivityLevelInfo.TabIndex = 16;
+            this.bmrActivityLevelInfo.Text = "Activity level per week";
             // 
-            // bmrLightlyRradioButton
+            // bmrWeightTextBox
             // 
-            this.bmrLightlyRradioButton.AutoSize = true;
-            this.bmrLightlyRradioButton.Location = new System.Drawing.Point(21, 66);
-            this.bmrLightlyRradioButton.Name = "bmrLightlyRradioButton";
-            this.bmrLightlyRradioButton.Size = new System.Drawing.Size(215, 24);
-            this.bmrLightlyRradioButton.TabIndex = 13;
-            this.bmrLightlyRradioButton.Text = "Lightly active (1-3 times)";
-            this.bmrLightlyRradioButton.UseVisualStyleBackColor = true;
+            this.bmrWeightTextBox.Location = new System.Drawing.Point(115, 90);
+            this.bmrWeightTextBox.Name = "bmrWeightTextBox";
+            this.bmrWeightTextBox.Size = new System.Drawing.Size(100, 27);
+            this.bmrWeightTextBox.TabIndex = 3;
             // 
-            // bmrModeratelyRadioButton
+            // bmrWeightInfo
             // 
-            this.bmrModeratelyRadioButton.AutoSize = true;
-            this.bmrModeratelyRadioButton.Location = new System.Drawing.Point(21, 96);
-            this.bmrModeratelyRadioButton.Name = "bmrModeratelyRadioButton";
-            this.bmrModeratelyRadioButton.Size = new System.Drawing.Size(248, 24);
-            this.bmrModeratelyRadioButton.TabIndex = 14;
-            this.bmrModeratelyRadioButton.Text = "Moderately active (3-5 times)";
-            this.bmrModeratelyRadioButton.UseVisualStyleBackColor = true;
+            this.bmrWeightInfo.AutoSize = true;
+            this.bmrWeightInfo.Location = new System.Drawing.Point(2, 93);
+            this.bmrWeightInfo.Name = "bmrWeightInfo";
+            this.bmrWeightInfo.Size = new System.Drawing.Size(95, 20);
+            this.bmrWeightInfo.TabIndex = 15;
+            this.bmrWeightInfo.Text = "Weight (kg)";
             // 
-            // bmrVeryRadioButton
+            // bmrHeightInfo
             // 
-            this.bmrVeryRadioButton.AutoSize = true;
-            this.bmrVeryRadioButton.Location = new System.Drawing.Point(21, 126);
-            this.bmrVeryRadioButton.Name = "bmrVeryRadioButton";
-            this.bmrVeryRadioButton.Size = new System.Drawing.Size(200, 24);
-            this.bmrVeryRadioButton.TabIndex = 15;
-            this.bmrVeryRadioButton.Text = "Very active (6-7 times)";
-            this.bmrVeryRadioButton.UseVisualStyleBackColor = true;
+            this.bmrHeightInfo.AutoSize = true;
+            this.bmrHeightInfo.Location = new System.Drawing.Point(2, 60);
+            this.bmrHeightInfo.Name = "bmrHeightInfo";
+            this.bmrHeightInfo.Size = new System.Drawing.Size(98, 20);
+            this.bmrHeightInfo.TabIndex = 14;
+            this.bmrHeightInfo.Text = "Height (cm)";
             // 
-            // bmrExtraRadioButton
+            // bmrHeightTextBox
             // 
-            this.bmrExtraRadioButton.AutoSize = true;
-            this.bmrExtraRadioButton.Location = new System.Drawing.Point(21, 156);
-            this.bmrExtraRadioButton.Name = "bmrExtraRadioButton";
-            this.bmrExtraRadioButton.Size = new System.Drawing.Size(284, 24);
-            this.bmrExtraRadioButton.TabIndex = 16;
-            this.bmrExtraRadioButton.Text = "Extra active, hard exercises or job";
-            this.bmrExtraRadioButton.UseVisualStyleBackColor = true;
+            this.bmrHeightTextBox.Location = new System.Drawing.Point(115, 57);
+            this.bmrHeightTextBox.Name = "bmrHeightTextBox";
+            this.bmrHeightTextBox.Size = new System.Drawing.Size(100, 27);
+            this.bmrHeightTextBox.TabIndex = 2;
             // 
-            // bmrUnselectButton
+            // bmrNameTextBox
             // 
-            this.bmrUnselectButton.Location = new System.Drawing.Point(170, 348);
-            this.bmrUnselectButton.Name = "bmrUnselectButton";
-            this.bmrUnselectButton.Size = new System.Drawing.Size(156, 35);
-            this.bmrUnselectButton.TabIndex = 13;
-            this.bmrUnselectButton.Text = "Unselect";
-            this.bmrUnselectButton.UseVisualStyleBackColor = true;
+            this.bmrNameTextBox.Location = new System.Drawing.Point(115, 24);
+            this.bmrNameTextBox.Name = "bmrNameTextBox";
+            this.bmrNameTextBox.Size = new System.Drawing.Size(203, 27);
+            this.bmrNameTextBox.TabIndex = 1;
             // 
-            // label1
+            // bmrNameInfo
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(2, 355);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(138, 20);
-            this.label1.TabIndex = 14;
-            this.label1.Text = "Rows selected: 0";
-            // 
-            // bmrListView
-            // 
-            this.bmrListView.Location = new System.Drawing.Point(332, 26);
-            this.bmrListView.Name = "bmrListView";
-            this.bmrListView.Size = new System.Drawing.Size(591, 357);
-            this.bmrListView.TabIndex = 12;
-            this.bmrListView.UseCompatibleStateImageBehavior = false;
+            this.bmrNameInfo.AutoSize = true;
+            this.bmrNameInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bmrNameInfo.Location = new System.Drawing.Point(2, 27);
+            this.bmrNameInfo.Name = "bmrNameInfo";
+            this.bmrNameInfo.Size = new System.Drawing.Size(53, 20);
+            this.bmrNameInfo.TabIndex = 11;
+            this.bmrNameInfo.Text = "Name";
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(957, 838);
+            this.ClientSize = new System.Drawing.Size(957, 817);
             this.Controls.Add(this.bmrBox);
             this.Controls.Add(this.bmiBox);
             this.Controls.Add(this.fuelBox);
@@ -625,6 +640,7 @@
             this.MaximizeBox = false;
             this.Name = "MainForm";
             this.Text = "Universal calculator";
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.fuelBox.ResumeLayout(false);
             this.fuelBox.PerformLayout();
             this.fuelBoxResults.ResumeLayout(false);
@@ -635,8 +651,6 @@
             this.bmiBoxResults.PerformLayout();
             this.bmrBox.ResumeLayout(false);
             this.bmrBox.PerformLayout();
-            this.bmrActivityBox.ResumeLayout(false);
-            this.bmrActivityBox.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -672,11 +686,11 @@
         private System.Windows.Forms.Label bmiResultInfo;
         private System.Windows.Forms.Button bmiCalculateButton;
         private System.Windows.Forms.TextBox bmiWeightTextBox;
-        private System.Windows.Forms.Label bmiWeightLabel;
-        private System.Windows.Forms.Label bmiHeightLabel;
+        private System.Windows.Forms.Label bmiWeightInfo;
+        private System.Windows.Forms.Label bmiHeightInfo;
         private System.Windows.Forms.TextBox bmiHeightTextBox;
         private System.Windows.Forms.TextBox bmiNameTextBox;
-        private System.Windows.Forms.Label bmiNameLabel;
+        private System.Windows.Forms.Label bmiNameInfo;
         private System.Windows.Forms.RadioButton bmiUsRadioButton;
         private System.Windows.Forms.RadioButton bmiMetricRadioButton;
         private System.Windows.Forms.Label bmiNormalInfo;
@@ -684,17 +698,19 @@
         private System.Windows.Forms.TextBox bmrAgeTextBox;
         private System.Windows.Forms.RadioButton bmrMaleRadioButton;
         private System.Windows.Forms.RadioButton bmrFemaleRadioButton;
-        private System.Windows.Forms.GroupBox bmrActivityBox;
-        private System.Windows.Forms.RadioButton bmrModeratelyRadioButton;
-        private System.Windows.Forms.RadioButton bmrLightlyRradioButton;
-        private System.Windows.Forms.RadioButton bmrSedentaryRadioButton;
         private System.Windows.Forms.Button bmrCalculateButton;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.RadioButton bmrExtraRadioButton;
-        private System.Windows.Forms.RadioButton bmrVeryRadioButton;
         private System.Windows.Forms.Button bmrUnselectButton;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label bmrSelectedItemLabel;
         private System.Windows.Forms.ListView bmrListView;
+        private System.Windows.Forms.ComboBox bmrActivityComboBox;
+        private System.Windows.Forms.Label bmrActivityLevelInfo;
+        private System.Windows.Forms.TextBox bmrWeightTextBox;
+        private System.Windows.Forms.Label bmrWeightInfo;
+        private System.Windows.Forms.Label bmrHeightInfo;
+        private System.Windows.Forms.TextBox bmrHeightTextBox;
+        private System.Windows.Forms.TextBox bmrNameTextBox;
+        private System.Windows.Forms.Label bmrNameInfo;
     }
 }
 

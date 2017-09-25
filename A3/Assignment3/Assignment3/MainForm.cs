@@ -17,7 +17,7 @@ namespace Assignment3
     public partial class MainForm : Form
     {
         /// <summary>
-        /// Creating and declaring some objects 
+        /// Creating and declaring some objects
         /// </summary>
         private FuelCalculator fuel = new FuelCalculator();
         private BodyMassIndex bmi = new BodyMassIndex();
@@ -26,6 +26,20 @@ namespace Assignment3
         public MainForm()
         {
             InitializeComponent();
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            InitGUI();
+        }
+
+        /// <summary>
+        /// Initializes the combobox's GUI
+        /// </summary>
+        private void InitGUI()
+        {
+            bmrActivityComboBox.Items.AddRange(bmr.GetActivityArrayInfo());
+            bmrActivityComboBox.SelectedIndex = 0;
         }
 
         /// <summary>
@@ -38,7 +52,7 @@ namespace Assignment3
         /// <param name="e"></param>
         private void fuelCalculateButton_Click(object sender, EventArgs e)
         {
-            if (ReadInputFuel())
+            if (ReadFuelInputs())
             {
                 if (fuel.ValidateValues())
                 {
@@ -54,7 +68,7 @@ namespace Assignment3
         /// Returns true if all input is converted to doubles otherwise false
         /// </summary>
         /// <returns>The result</returns>
-        private bool ReadInputFuel()
+        private bool ReadFuelInputs()
         {
             double value;
             bool result = true;
@@ -122,45 +136,50 @@ namespace Assignment3
         {
             if (bmiMetricRadioButton.Checked)
             {
-                bmiHeightLabel.Text = "Height (cm)";
-                bmiWeightLabel.Text = "Weight (kg)";
+                bmiHeightInfo.Text = "Height (cm)";
+                bmiWeightInfo.Text = "Weight (kg)";
             }
             else
             {
-                bmiHeightLabel.Text = "Height (in)";
-                bmiWeightLabel.Text = "Weight (lb)";
+                bmiHeightInfo.Text = "Height (in)";
+                bmiWeightInfo.Text = "Weight (lb)";
             }
         }
 
         /// <summary>
-        /// 
+        /// First we read in all inputs and tries to convert some to doubles
+        /// If they can't be converted we stop and tell the user what's wrong
+        /// We send in the boolean value of the metric unit (checked, true or not checked, false)
+        /// If the values are okay the calculation begins and are shown to the user through the method UpdateBMIGUI
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void bmiCalculateButton_Click(object sender, EventArgs e)
         {
-            if (ReadInputBMI())
+            if (ReadBMIInputs())
             {
                 if (bmi.ValidateValues())
                 {
+                    ReadBMIName();
+                    bmi.SetUnit(bmiMetricRadioButton.Checked);
                     UpdateBMIGUI();
                 }
             }
         }
 
         /// <summary>
-        /// /// Tries to convert BMI inputs to doubles
+        /// Tries to convert BMI inputs to doubles
         /// When an input can be converted we accses the bmi object and set in that value in corresponding set method
         /// When an input can't be converted we tell the user that the input must be in digits
         /// Returns true if all input is converted to doubles otherwise false
         /// </summary>
         /// <returns>The result</returns>
-        private bool ReadInputBMI()
+        private bool ReadBMIInputs()
         {
-            float value;
+            double value;
             bool result = true;
 
-            if (float.TryParse(bmiHeightTextBox.Text, out value))
+            if (double.TryParse(bmiHeightTextBox.Text, out value))
             {
                 bmi.SetHeight(value);
             }
@@ -170,7 +189,7 @@ namespace Assignment3
                 result = false;
             }
 
-            if (float.TryParse(bmiWeightTextBox.Text, out value))
+            if (double.TryParse(bmiWeightTextBox.Text, out value))
             {
                 bmi.SetWeight(value);
             }
@@ -179,8 +198,6 @@ namespace Assignment3
                 MessageBox.Show("The weight must be digits only!", "Error Input", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 result = false;
             }
-            ReadName();
-            bmi.SetUnit(bmiMetricRadioButton.Checked);
             return result;
         }
 
@@ -190,15 +207,15 @@ namespace Assignment3
         ///  If not blank set what was written
         ///  If blank set the value "No Name"
         /// </summary>
-        private void ReadName()
+        private void ReadBMIName()
         {
-            if (bmiNameTextBox.Text.Trim().Equals(""))
+            if (!(String.IsNullOrEmpty(bmiNameTextBox.Text.Trim())))
             {
-                bmi.SetName("No Name");
+                bmi.SetName(bmiNameTextBox.Text);
             }
             else
             {
-                bmi.SetName(bmiNameTextBox.Text);
+                bmi.SetName("No Name");
             }
         }
 
@@ -208,8 +225,174 @@ namespace Assignment3
         private void UpdateBMIGUI()
         {
             bmiBoxResults.Text = "Results for " + bmi.GetName();
-            bmiResultLabel.Text = bmi.CalcBMI().ToString("0.00");
+            bmiResultLabel.Text = bmi.CalcBMI().ToString();
             bmiCategoryLabel.Text = bmi.CalcCategory();
+        }
+
+        private void bmrCalculateButton_Click(object sender, EventArgs e)
+        {
+            if (ReadBMRInputs())
+            {
+                if (bmr.ValidateValues())
+                {
+                    ReadBMRName();
+                    ReadBMRGender();
+                    ReadBMRActivityLevel();
+                    UpdateBMRGUI();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Tries to convert BMR inputs to doubles and the age to a int
+        /// When an input can be converted we accses the bmr object and set in that value in corresponding set method
+        /// When an input can't be converted we tell the user that the input must be in digits
+        /// Returns true if all input is converted to doubles otherwise false
+        /// </summary>
+        /// <returns>The result</returns>
+        private bool ReadBMRInputs()
+        {
+            double value;
+            bool result = true;
+
+            if (double.TryParse(bmrHeightTextBox.Text, out value))
+            {
+                bmr.SetHeight(value);
+            }
+            else
+            {
+                MessageBox.Show("The height must be digits only!", "Error Input", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                result = false;
+            }
+
+            if (double.TryParse(bmrWeightTextBox.Text, out value))
+            {
+                bmr.SetWeight(value);
+            }
+            else
+            {
+                MessageBox.Show("The weight must be digits only!", "Error Input", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                result = false;
+            }
+
+            try
+            {
+                bmr.SetAge(int.Parse(bmrAgeTextBox.Text));
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("The age must be in whole years!", "Error Input", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                result = false;
+            }
+            return result;
+        }
+
+        /// <summary>
+        ///  Takes in the name and deicides if the name is blank or not 
+        ///  calls on the method setname inside of the bmi object
+        ///  If not blank set what was written
+        ///  If blank set the value "No Name"
+        /// </summary>
+        private void ReadBMRName()
+        {
+            if (!(String.IsNullOrEmpty(bmrNameTextBox.Text.Trim())))
+            {
+                bmr.SetName(bmrNameTextBox.Text);
+            }
+            else
+            {
+                bmr.SetName("No Name");
+            }
+        }
+
+        /// <summary>
+        /// Sets the gender to true or false
+        /// True if a female and false if a male
+        /// </summary>
+        private void ReadBMRGender()
+        {
+            bmr.SetGender(bmrFemaleRadioButton.Checked);
+        }
+
+        /// <summary>
+        /// Sets the activity index to what the selected index of the activity combobox
+        /// </summary>
+        private void ReadBMRActivityLevel()
+        {
+           bmr.SetActivityIndex(bmrActivityComboBox.SelectedIndex);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private void UpdateBMRGUI()
+        {
+            bmrListView.Clear();
+            bmrListView.Items.Add("BMR results for " + bmr.GetName());
+            bmrListView.Items.Add("");
+            bmrListView.Items.Add("Your BMR (calories/day) " + bmr.CalcBMRValue());
+            bmrListView.Items.Add("Calories to maintain weight " + bmr.CalcMaintainWeightCalories());
+            bmrListView.Items.Add("Calories to lose 0.5 kg per week " + bmr.LoseOrGainWeight(-500));
+            bmrListView.Items.Add("Calories to lose 1 kg per week " + bmr.LoseOrGainWeight(-1000));
+            bmrListView.Items.Add("Calories to gain 0.5 kg per week " + bmr.LoseOrGainWeight(500));
+            bmrListView.Items.Add("Calories to gain 1 kg per week " + bmr.LoseOrGainWeight(1000));
+            bmrListView.Items.Add("");
+            bmrListView.Items.Add("Losing more than 1000 calories per day is to be avoided!");
+        }
+
+        /// <summary>
+        /// When the selection changes we try to find the new selected item index
+        /// We also update the GUI to let the user know what we found out
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void bmrListView_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int index = GetSelectedIndex();
+
+            if (index != -1)
+            {
+                bmrSelectedItemLabel.Text = "Selected item: " + GetSelectedIndex();
+            }
+            else
+            {
+                bmrSelectedItemLabel.Text = "Selected item: None";
+            }
+        }
+
+        /// <summary>
+        /// Finds the selected index and returns it
+        /// If no item was selected it returns -1
+        /// </summary>
+        /// <returns>The index</returns>
+        private int GetSelectedIndex()
+        {
+            for(int i = 0; i < bmrListView.Items.Count; i++)
+            {
+                if (bmrListView.Items[i].Selected)
+                {
+                    return i;
+                }
+            }
+            return -1;
+        }
+
+        /// <summary>
+        /// Unselects selected items from the list
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void bmrUnselectButton_Click(object sender, EventArgs e)
+        {
+            UnselectSelectedItems();
+        }
+
+        /// <summary>
+        /// Unselects selected items from the list
+        /// </summary>
+        private void UnselectSelectedItems()
+        {
+            bmrListView.SelectedItems.Clear();
         }
     }
 }
