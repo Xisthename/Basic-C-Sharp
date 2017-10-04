@@ -60,6 +60,8 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Recipe.cs" />
+    <Compile Include="RecipeManger.cs" />
     <EmbeddedResource Include="IngredientsForm.resx">
       <DependentUpon>IngredientsForm.cs</DependentUpon>
     </EmbeddedResource>

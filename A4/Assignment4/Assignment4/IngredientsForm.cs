@@ -12,6 +12,11 @@ namespace Assignment4
 {
     public partial class IngredientsForm : Form
     {
+        /// <summary>
+        /// Delecering necessary instance variables
+        /// </summary>
+        private Recipe recipe = new Recipe(50);
+
         public IngredientsForm()
         {
             InitializeComponent();

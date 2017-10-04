@@ -16,6 +16,12 @@ namespace Assignment4
     /// </summary>
     public partial class MainForm : Form
     {
+        /// <summary>
+        /// Delecering necessary instance variables
+        /// </summary>
+        private RecipeManger recipeManger = new RecipeManger(200);
+        private IngredientsForm ingredientsForm = new IngredientsForm();
+
         public MainForm()
         {
             InitializeComponent();
