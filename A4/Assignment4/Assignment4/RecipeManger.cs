@@ -17,6 +17,7 @@ namespace Assignment4
         /// Delecering necessary instance variables
         /// </summary>
         private Recipe[] recipeList;
+        private int countItems = 0;
 
         /// <summary>
         /// Constructor that takes in how many recipes this class will be able to hold
@@ -25,6 +26,22 @@ namespace Assignment4
         public RecipeManger(int maxRecipes)
         {
             recipeList = new Recipe[maxRecipes];
+        }
+
+        /// <summary>
+        /// Tries to add a recipe to the recipeList
+        /// </summary>
+        /// <param name="recipe"></param>
+        /// <returns></returns>
+        public bool AddRecipe(Recipe recipe)
+        {
+            if (countItems < recipeList.Length)
+            {
+                recipeList[countItems] = recipe;
+                countItems++;
+                return true;
+            }
+            return false;
         }
     }
 }

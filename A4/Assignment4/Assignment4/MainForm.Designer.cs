@@ -70,6 +70,7 @@
             this.AddRecipeButton.TabIndex = 6;
             this.AddRecipeButton.Text = "Add Recipe";
             this.AddRecipeButton.UseVisualStyleBackColor = true;
+            this.AddRecipeButton.Click += new System.EventHandler(this.AddRecipeButton_Click);
             // 
             // newRecipeNameTextBox
             // 
@@ -86,6 +87,7 @@
             this.AddIngredientsButton.TabIndex = 4;
             this.AddIngredientsButton.Text = "Add ingredients";
             this.AddIngredientsButton.UseVisualStyleBackColor = true;
+            this.AddIngredientsButton.Click += new System.EventHandler(this.AddIngredientsButton_Click);
             // 
             // newRecpieCategoryComboBox
             // 

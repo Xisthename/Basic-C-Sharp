@@ -19,17 +19,122 @@ namespace Assignment4
         /// <summary>
         /// Delecering necessary instance variables
         /// </summary>
+        private Recipe recipe;
         private RecipeManger recipeManger = new RecipeManger(200);
-        private IngredientsForm ingredientsForm = new IngredientsForm();
+        private IngredientsForm ingredientsForm;
 
         public MainForm()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// When the program starts we set up the combobox
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void MainForm_Load(object sender, EventArgs e)
         {
+            InitGUI();
+        }
 
+        /// <summary>
+        /// Sets up the combobox through the enum FoodCategory
+        /// </summary>
+        private void InitGUI()
+        {
+            string[] categorys = Enum.GetNames(typeof(FoodCategory));
+            newRecpieCategoryComboBox.Items.AddRange(categorys);
+            newRecpieCategoryComboBox.SelectedIndex = 0;
+        }
+
+        /// <summary>
+        /// Creats a new object of recipe and passes it on to the ingredientsForm through it's constructor
+        /// Then we show that form and after a while when the user is done we set our recipe to the recipe in the other class
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void AddIngredientsButton_Click(object sender, EventArgs e)
+        {
+            recipe = new Recipe(50);
+            ingredientsForm = new IngredientsForm(recipe);
+            ingredientsForm.ShowDialog();
+            recipe = ingredientsForm.GetRecipe();
+        }
+
+        /// <summary>
+        /// Tries to add the recipe object to an array in the RecipeManger class
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void AddRecipeButton_Click(object sender, EventArgs e)
+        {
+            if (recipe != null && recipe.GetCurrentIngredients() > 0)
+            {
+                if (ReadName())
+                {
+                    if (ReadDescription())
+                    {
+                        ReadCategory();
+
+                        if (!recipeManger.AddRecipe(recipe))
+                        {
+                            MessageBox.Show("Too many recipes is already created!");
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("A recipe must contain a description!");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("A recipe must have a name!");
+                }
+            }
+            else
+            {
+                MessageBox.Show("A recipe must contain ingredients!");
+            }
+        }
+
+        /// <summary>
+        /// Checks if the name is not blank
+        /// If it's not empty we add the name to the recipe object and return true
+        /// Otherwise we just return false
+        /// </summary>
+        /// <returns></returns>
+        private bool ReadName()
+        {
+            if (!String.IsNullOrEmpty(newRecipeNameTextBox.Text))
+            {
+                recipe.Name = newRecipeNameTextBox.Text;
+                return true;
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// Sets the category of the recipe to the selected category from the combobox
+        /// </summary>
+        private void ReadCategory()
+        {
+            recipe.Category = (FoodCategory) newRecpieCategoryComboBox.SelectedIndex;
+        }
+
+        /// <summary>
+        /// Checks if the description is not blank
+        /// If it's not empty we add the description to the recipe object and return true
+        /// Otherwise we just return false
+        /// </summary>
+        private bool ReadDescription()
+        {
+            if (!String.IsNullOrEmpty(newRecipeDescriptionTextBox.Text))
+            {
+                recipe.Description = newRecipeDescriptionTextBox.Text;
+                return true;
+            }
+            return false;
         }
     }
 }
