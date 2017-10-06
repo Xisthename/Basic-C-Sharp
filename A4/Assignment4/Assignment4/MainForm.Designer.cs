@@ -42,6 +42,8 @@
             this.ingredientsInfo = new System.Windows.Forms.Label();
             this.categoryInfo = new System.Windows.Forms.Label();
             this.descriptionInfo = new System.Windows.Forms.Label();
+            this.deleteButton = new System.Windows.Forms.Button();
+            this.editButton = new System.Windows.Forms.Button();
             this.newRecipeBox.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -130,7 +132,7 @@
             this.recpieListBox.ItemHeight = 16;
             this.recpieListBox.Location = new System.Drawing.Point(443, 51);
             this.recpieListBox.Name = "recpieListBox";
-            this.recpieListBox.Size = new System.Drawing.Size(477, 372);
+            this.recpieListBox.Size = new System.Drawing.Size(477, 324);
             this.recpieListBox.TabIndex = 1;
             // 
             // NameInfo
@@ -173,11 +175,35 @@
             this.descriptionInfo.TabIndex = 10;
             this.descriptionInfo.Text = "Description";
             // 
+            // deleteButton
+            // 
+            this.deleteButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F);
+            this.deleteButton.Location = new System.Drawing.Point(820, 380);
+            this.deleteButton.Name = "deleteButton";
+            this.deleteButton.Size = new System.Drawing.Size(100, 35);
+            this.deleteButton.TabIndex = 12;
+            this.deleteButton.Text = "Delete";
+            this.deleteButton.UseVisualStyleBackColor = true;
+            this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
+            // 
+            // editButton
+            // 
+            this.editButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F);
+            this.editButton.Location = new System.Drawing.Point(443, 380);
+            this.editButton.Name = "editButton";
+            this.editButton.Size = new System.Drawing.Size(100, 35);
+            this.editButton.TabIndex = 11;
+            this.editButton.Text = "Edit";
+            this.editButton.UseVisualStyleBackColor = true;
+            this.editButton.Click += new System.EventHandler(this.editButton_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(932, 433);
+            this.ClientSize = new System.Drawing.Size(932, 428);
+            this.Controls.Add(this.deleteButton);
+            this.Controls.Add(this.editButton);
             this.Controls.Add(this.descriptionInfo);
             this.Controls.Add(this.categoryInfo);
             this.Controls.Add(this.ingredientsInfo);
@@ -212,6 +238,8 @@
         private System.Windows.Forms.Label ingredientsInfo;
         private System.Windows.Forms.Label categoryInfo;
         private System.Windows.Forms.Label descriptionInfo;
+        private System.Windows.Forms.Button deleteButton;
+        private System.Windows.Forms.Button editButton;
     }
 }
 

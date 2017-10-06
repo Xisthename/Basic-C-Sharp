@@ -19,8 +19,10 @@ namespace Assignment4
         /// <summary>
         /// Delecering necessary instance variables
         /// </summary>
-        private Recipe recipe;
-        private RecipeManger recipeManger = new RecipeManger(200);
+        private const int maxIngredients = 50;
+        private const int maxRecipes = 200;
+        private Recipe recipe = new Recipe(maxIngredients);
+        private RecipeManger recipeManger = new RecipeManger(maxRecipes);
         private IngredientsForm ingredientsForm;
 
         public MainForm()
@@ -50,13 +52,12 @@ namespace Assignment4
 
         /// <summary>
         /// Creats a new object of recipe and passes it on to the ingredientsForm through it's constructor
-        /// Then we show that form and after a while when the user is done we set our recipe to the recipe in the other class
+        /// Then we show that form and after a while when the user is done we set our recipe to the recipe from the other class
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void AddIngredientsButton_Click(object sender, EventArgs e)
         {
-            recipe = new Recipe(50);
             ingredientsForm = new IngredientsForm(recipe);
             ingredientsForm.ShowDialog();
             recipe = ingredientsForm.GetRecipe();
@@ -69,18 +70,72 @@ namespace Assignment4
         /// <param name="e"></param>
         private void AddRecipeButton_Click(object sender, EventArgs e)
         {
-            if (recipe != null && recipe.GetCurrentIngredients() > 0)
+            if (ReadRecipeInputs())
+            {
+                if (recipeManger.AddRecipe(recipe))
+                {
+                    recipe = new Recipe(maxIngredients);
+                    UpdateGUI();
+                }
+                else
+                {
+                    MessageBox.Show("Too many recipes is already created!");
+                }
+            }
+        }
+
+        /// <summary>
+        /// Tries to edit the selected recipe
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void editButton_Click(object sender, EventArgs e)
+        {
+            if (ReadRecipeInputs())
+            {
+                if (recipeManger.ChangeRecipe(recpieListBox.SelectedIndex, recipe))
+                {
+                    UpdateGUI();
+                }
+                else
+                {
+                    MessageBox.Show("The selected recipe was not changed!");
+                }
+            }
+        }
+
+        /// <summary>
+        /// Tries to remove the selected recipe
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void deleteButton_Click(object sender, EventArgs e)
+        {
+            if (recipeManger.RemoveRecipeAt(recpieListBox.SelectedIndex))
+            {
+                UpdateGUI();
+            }
+            else
+            {
+                MessageBox.Show("The selected recipe was not removed!");
+            }
+        }
+
+        /// <summary>
+        /// Tries to read all inputs needed to making a recipe
+        /// If the values are ok we return true otherwise false with an error message to the user
+        /// </summary>
+        /// <returns></returns>
+        private bool ReadRecipeInputs()
+        {
+            if (recipe != null && recipe.countIngredients() > 0)
             {
                 if (ReadName())
                 {
                     if (ReadDescription())
                     {
                         ReadCategory();
-
-                        if (!recipeManger.AddRecipe(recipe))
-                        {
-                            MessageBox.Show("Too many recipes is already created!");
-                        }
+                        return true;
                     }
                     else
                     {
@@ -96,6 +151,7 @@ namespace Assignment4
             {
                 MessageBox.Show("A recipe must contain ingredients!");
             }
+            return false;
         }
 
         /// <summary>
@@ -135,6 +191,20 @@ namespace Assignment4
                 return true;
             }
             return false;
+        }
+
+        /// <summary>
+        /// Updates the table
+        /// </summary>
+        private void UpdateGUI()
+        {
+            recpieListBox.Items.Clear();
+
+            for (int i = 0; i < recipeManger.CountRecipes(); i++)
+            {
+                Recipe tempRecipe = recipeManger.GetRecipeAt(i);
+                recpieListBox.Items.Add(tempRecipe.Name);
+            }
         }
     }
 }

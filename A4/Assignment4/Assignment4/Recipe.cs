@@ -103,7 +103,7 @@ namespace Assignment4
         }
 
         /// <summary>
-        /// Tries to find an empty index and add the ingredient to that index
+        /// Tries to find an empty index and adds the ingredient to that index
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
@@ -123,15 +123,13 @@ namespace Assignment4
         }
 
         /// <summary>
-        /// Tries to modify an ingredient given with the newText (what the user has written)
-        /// And finds the index where it shall modify by help from the oldText (selectedText)
+        /// Tries to modify an ingredient at the index value and with the newText value
         /// </summary>
-        /// <param name="value"></param>
+        /// <param name="index"></param>
+        /// <param name="newText"></param>
         /// <returns></returns>
-        public bool ChangeIngredient(String oldText, String newText)
+        public bool ChangeIngredient(int index, String newText)
         {
-            int index = FindSelectedIndex(oldText);
-
             if (CheckIndex(index))
             {
                 ingredients[index] = newText;
@@ -141,17 +139,20 @@ namespace Assignment4
         }
 
         /// <summary>
-        /// Tries to remove a index with the text from the parameter
+        /// Tries to remove an ingredient with the index from the parameter
+        /// We rezise the array so the ingredients array will always be synced with the listbox array
+        /// By swapping the index down in the array we automatically 'remove' the index becuase it gets a new value
         /// </summary>
-        /// <param name="text"></param>
+        /// <param name="index"></param>
         /// <returns></returns>
-        public bool RemoveIndex(String text)
+        public bool RemoveIngredient(int index)
         {
-            int index = FindSelectedIndex(text);
-
             if (CheckIndex(index))
             {
-                ingredients[index] = null;
+                for (int i = index + 1; i < ingredients.Length; i++)
+                {
+                    ingredients[i - 1] = ingredients[i];
+                }
                 return true;
             }
             return false;
@@ -164,51 +165,11 @@ namespace Assignment4
         /// <returns></returns>
         public int FindEmptyIndex()
         {
-            for (int i = 0; i < ingredients.Length; i++)
-            {
-                if (String.IsNullOrEmpty(ingredients[i]))
+            if (ingredients != null)
+            { 
+                for (int i = 0; i < ingredients.Length; i++)
                 {
-                    return i;
-                }
-            }
-            return -1;
-        }
-
-        /// <summary>
-        /// Tries to find a position of an ingredient that has the same text as the parameter
-        /// If we find a position we return that index otherwise we return -1 as a error message
-        /// 
-        /// We can't take the current index from the listbox because of the following concept
-        /// This is the ingredient array and we added 5 ingredients at the following index
-        /// 0, 1, 2, 3, 4
-        /// 
-        /// Now we remove index 2
-        /// 0, 1, 3, 4
-        /// 
-        /// But the listbox has cleared it's array and added the new array which results that the listbox's array is
-        /// 0, 1, 2, 3
-        /// 
-        /// As we can see the two arrays are not in sync anymore 0=0, 1=1 but 3!=2, 4!=3
-        /// 
-        /// We get this problem because of how i add index and update the listbox
-        /// With my method we will always be able to fill the array with indexes because it looks
-        /// after an empty index when we are adding a new ingredient instead of just adding at the index (last occupied index + 1)
-        /// It would be much easier but if you add 50 ingredients and remove them all you wont have any space left in the array
-        /// So this is preventing that which is a much worse problem than we are getting now
-        /// Which is that if the user has added the same text and wants to remove or change the last index of those
-        /// The first index will be removed instead of the actually selected index
-        /// But who writes in the same ingredient twice or more?
-        /// </summary>
-        /// <param name="text"></param>
-        /// <returns></returns>
-        public int FindSelectedIndex(String text)
-        {
-            for (int i = 0; i < ingredients.Length; i++)
-            {
-                if (!String.IsNullOrEmpty(ingredients[i]))
-                {
-                    MessageBox.Show(ingredients[i].Equals(text) + ingredients[i] + text);
-                    if (ingredients[i].Equals(text))
+                    if (String.IsNullOrEmpty(ingredients[i]))
                     {
                         return i;
                     }
@@ -232,14 +193,10 @@ namespace Assignment4
         }
 
         /// <summary>
-        /// This method seem to just be using the method FindEmptyIndex for counting all occupieded index
-        /// But it cant because if we delete an index at 2 and we have occupied indexs higher than 2 they wont be counted
-        /// Because the method will find an empty slot at index 2 and return 2
-        /// 
-        /// So this method is looking for occupied indexs and counting them through the whole array and returning that number
+        /// Looking for occupied indexs and counting them through the whole array and returning that counted number
         /// </summary>
         /// <returns></returns>
-        public int GetCurrentIngredients()
+        public int countIngredients()
         {
             int count = 0;
 
