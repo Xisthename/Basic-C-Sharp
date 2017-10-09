@@ -37,13 +37,13 @@
             this.newRecipeDescriptionTextBox = new System.Windows.Forms.TextBox();
             this.newRecipeCategoryInfo = new System.Windows.Forms.Label();
             this.newRecipeNameInfo = new System.Windows.Forms.Label();
-            this.recpieListBox = new System.Windows.Forms.ListBox();
-            this.NameInfo = new System.Windows.Forms.Label();
-            this.ingredientsInfo = new System.Windows.Forms.Label();
-            this.categoryInfo = new System.Windows.Forms.Label();
-            this.descriptionInfo = new System.Windows.Forms.Label();
             this.deleteButton = new System.Windows.Forms.Button();
             this.editButton = new System.Windows.Forms.Button();
+            this.recipeListView = new System.Windows.Forms.ListView();
+            this.ColumnName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnIngredients = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnCategory = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnDescription = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.newRecipeBox.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -126,59 +126,10 @@
             this.newRecipeNameInfo.TabIndex = 0;
             this.newRecipeNameInfo.Text = "Name of recipe";
             // 
-            // recpieListBox
-            // 
-            this.recpieListBox.FormattingEnabled = true;
-            this.recpieListBox.ItemHeight = 16;
-            this.recpieListBox.Location = new System.Drawing.Point(443, 51);
-            this.recpieListBox.Name = "recpieListBox";
-            this.recpieListBox.Size = new System.Drawing.Size(477, 324);
-            this.recpieListBox.TabIndex = 1;
-            // 
-            // NameInfo
-            // 
-            this.NameInfo.AutoSize = true;
-            this.NameInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F);
-            this.NameInfo.Location = new System.Drawing.Point(439, 28);
-            this.NameInfo.Name = "NameInfo";
-            this.NameInfo.Size = new System.Drawing.Size(53, 20);
-            this.NameInfo.TabIndex = 7;
-            this.NameInfo.Text = "Name";
-            // 
-            // ingredientsInfo
-            // 
-            this.ingredientsInfo.AutoSize = true;
-            this.ingredientsInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F);
-            this.ingredientsInfo.Location = new System.Drawing.Point(554, 28);
-            this.ingredientsInfo.Name = "ingredientsInfo";
-            this.ingredientsInfo.Size = new System.Drawing.Size(91, 20);
-            this.ingredientsInfo.TabIndex = 8;
-            this.ingredientsInfo.Text = "Ingredients";
-            // 
-            // categoryInfo
-            // 
-            this.categoryInfo.AutoSize = true;
-            this.categoryInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F);
-            this.categoryInfo.Location = new System.Drawing.Point(695, 28);
-            this.categoryInfo.Name = "categoryInfo";
-            this.categoryInfo.Size = new System.Drawing.Size(76, 20);
-            this.categoryInfo.TabIndex = 9;
-            this.categoryInfo.Text = "Category";
-            // 
-            // descriptionInfo
-            // 
-            this.descriptionInfo.AutoSize = true;
-            this.descriptionInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F);
-            this.descriptionInfo.Location = new System.Drawing.Point(820, 28);
-            this.descriptionInfo.Name = "descriptionInfo";
-            this.descriptionInfo.Size = new System.Drawing.Size(95, 20);
-            this.descriptionInfo.TabIndex = 10;
-            this.descriptionInfo.Text = "Description";
-            // 
             // deleteButton
             // 
             this.deleteButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F);
-            this.deleteButton.Location = new System.Drawing.Point(820, 380);
+            this.deleteButton.Location = new System.Drawing.Point(823, 380);
             this.deleteButton.Name = "deleteButton";
             this.deleteButton.Size = new System.Drawing.Size(100, 35);
             this.deleteButton.TabIndex = 12;
@@ -197,18 +148,54 @@
             this.editButton.UseVisualStyleBackColor = true;
             this.editButton.Click += new System.EventHandler(this.editButton_Click);
             // 
+            // recipeListView
+            // 
+            this.recipeListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.ColumnName,
+            this.columnIngredients,
+            this.columnCategory,
+            this.columnDescription});
+            this.recipeListView.FullRowSelect = true;
+            this.recipeListView.GridLines = true;
+            this.recipeListView.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+            this.recipeListView.HideSelection = false;
+            this.recipeListView.Location = new System.Drawing.Point(443, 25);
+            this.recipeListView.MultiSelect = false;
+            this.recipeListView.Name = "recipeListView";
+            this.recipeListView.Size = new System.Drawing.Size(480, 350);
+            this.recipeListView.TabIndex = 13;
+            this.recipeListView.UseCompatibleStateImageBehavior = false;
+            this.recipeListView.View = System.Windows.Forms.View.Details;
+            this.recipeListView.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.recipeListView_ItemSelectionChanged);
+            // 
+            // ColumnName
+            // 
+            this.ColumnName.Text = "Name";
+            this.ColumnName.Width = 100;
+            // 
+            // columnIngredients
+            // 
+            this.columnIngredients.Text = "Ingredients";
+            this.columnIngredients.Width = 75;
+            // 
+            // columnCategory
+            // 
+            this.columnCategory.Text = "Category";
+            this.columnCategory.Width = 75;
+            // 
+            // columnDescription
+            // 
+            this.columnDescription.Text = "Description";
+            this.columnDescription.Width = 105;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(932, 428);
+            this.Controls.Add(this.recipeListView);
             this.Controls.Add(this.deleteButton);
             this.Controls.Add(this.editButton);
-            this.Controls.Add(this.descriptionInfo);
-            this.Controls.Add(this.categoryInfo);
-            this.Controls.Add(this.ingredientsInfo);
-            this.Controls.Add(this.NameInfo);
-            this.Controls.Add(this.recpieListBox);
             this.Controls.Add(this.newRecipeBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -219,7 +206,6 @@
             this.newRecipeBox.ResumeLayout(false);
             this.newRecipeBox.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -233,13 +219,13 @@
         private System.Windows.Forms.Button AddRecipeButton;
         private System.Windows.Forms.TextBox newRecipeNameTextBox;
         private System.Windows.Forms.Button AddIngredientsButton;
-        private System.Windows.Forms.ListBox recpieListBox;
-        private System.Windows.Forms.Label NameInfo;
-        private System.Windows.Forms.Label ingredientsInfo;
-        private System.Windows.Forms.Label categoryInfo;
-        private System.Windows.Forms.Label descriptionInfo;
         private System.Windows.Forms.Button deleteButton;
         private System.Windows.Forms.Button editButton;
+        private System.Windows.Forms.ListView recipeListView;
+        private System.Windows.Forms.ColumnHeader ColumnName;
+        private System.Windows.Forms.ColumnHeader columnIngredients;
+        private System.Windows.Forms.ColumnHeader columnCategory;
+        private System.Windows.Forms.ColumnHeader columnDescription;
     }
 }
 

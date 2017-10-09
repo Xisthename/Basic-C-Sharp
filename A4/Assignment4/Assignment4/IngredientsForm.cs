@@ -23,8 +23,8 @@ namespace Assignment4
 
         /// <summary>
         /// Constructor that takes in a recipe object to declare the instance variable recipe
-        /// We also update the GUI which may seem strange but if a user has added ingredients before and 
-        /// comes back we have to display them
+        /// We also update the GUI which may seem strange but if the recipe from the parameter
+        /// contains ingredients we would like the user to seee them
         /// </summary>
         /// <param name="recipe"></param>
         public IngredientsForm(Recipe recipe)
@@ -102,7 +102,14 @@ namespace Assignment4
             }
             else
             {
-                MessageBox.Show("Unkown error! Could not delete the index " + selectedIndex);
+                if (selectedIndex == -1)
+                {
+                    MessageBox.Show("You must select an ingredient you want to delete!");
+                }
+                else
+                {
+                    MessageBox.Show("Unkown error! Could not delete the index " + selectedIndex);
+                }
             }
         }
 
@@ -124,7 +131,7 @@ namespace Assignment4
         /// </summary>
         private void UpdateGUI()
         {
-            ingredientsLabel.Text = "Number of ingredients: " + recipe.countIngredients();
+            ingredientsLabel.Text = "Number of ingredients: " + recipe.CountIngredients();
             ingredientsListBox.Items.Clear();
 
             for (int i = 0; i < recipe.GetMaxIngredients(); i++)

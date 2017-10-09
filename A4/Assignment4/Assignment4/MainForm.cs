@@ -60,7 +60,8 @@ namespace Assignment4
         {
             ingredientsForm = new IngredientsForm(recipe);
             ingredientsForm.ShowDialog();
-            recipe = ingredientsForm.GetRecipe();
+            recipe = new Recipe(maxIngredients);
+            recipe.Ingredients = ingredientsForm.GetRecipe().Ingredients;
         }
 
         /// <summary>
@@ -74,8 +75,8 @@ namespace Assignment4
             {
                 if (recipeManger.AddRecipe(recipe))
                 {
-                    recipe = new Recipe(maxIngredients);
                     UpdateGUI();
+                    recipe = new Recipe(maxIngredients);
                 }
                 else
                 {
@@ -93,13 +94,16 @@ namespace Assignment4
         {
             if (ReadRecipeInputs())
             {
-                if (recipeManger.ChangeRecipe(recpieListBox.SelectedIndex, recipe))
+                if (recipeListView.FocusedItem != null)
                 {
-                    UpdateGUI();
-                }
-                else
-                {
-                    MessageBox.Show("The selected recipe was not changed!");
+                    if (recipeManger.ChangeRecipe(recipeListView.FocusedItem.Index, recipe))
+                    {
+                        UpdateGUI();
+                    }
+                    else
+                    {
+                        MessageBox.Show("The selected recipe was not changed!");
+                    }
                 }
             }
         }
@@ -111,13 +115,16 @@ namespace Assignment4
         /// <param name="e"></param>
         private void deleteButton_Click(object sender, EventArgs e)
         {
-            if (recipeManger.RemoveRecipeAt(recpieListBox.SelectedIndex))
+            if (recipeListView.FocusedItem != null)
             {
-                UpdateGUI();
-            }
-            else
-            {
-                MessageBox.Show("The selected recipe was not removed!");
+                if (recipeManger.RemoveRecipeAt(recipeListView.FocusedItem.Index))
+                {
+                    UpdateGUI();
+                }
+                else
+                {
+                    MessageBox.Show("The selected recipe was not removed!");
+                }
             }
         }
 
@@ -128,7 +135,7 @@ namespace Assignment4
         /// <returns></returns>
         private bool ReadRecipeInputs()
         {
-            if (recipe != null && recipe.countIngredients() > 0)
+            if (recipe != null && recipe.CountIngredients() > 0)
             {
                 if (ReadName())
                 {
@@ -198,12 +205,39 @@ namespace Assignment4
         /// </summary>
         private void UpdateGUI()
         {
-            recpieListBox.Items.Clear();
+            recipeListView.Items.Clear();
 
             for (int i = 0; i < recipeManger.CountRecipes(); i++)
             {
                 Recipe tempRecipe = recipeManger.GetRecipeAt(i);
-                recpieListBox.Items.Add(tempRecipe.Name);
+                ListViewItem row = new ListViewItem(tempRecipe.Name);
+                row.SubItems.Add(tempRecipe.CountIngredients().ToString());
+                row.SubItems.Add(tempRecipe.Category.ToString());
+                row.SubItems.Add(tempRecipe.Description);
+                recipeListView.Items.Add(row);
+            }
+        }
+
+        /// <summary>
+        /// When the selection of an item changes
+        /// First checking if we even have a selected item anymore
+        /// If we have a new selected item we locate the selected recipe and takes out the information
+        /// We also set our recipe.Ingredients to get the Ingredients of the that selected index from recipeManger
+        /// Which dosen't point on the same object but to a string array so we dont overwrite that object later on
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void recipeListView_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
+        {
+            if (recipeListView.FocusedItem != null && recipeListView.SelectedItems.Count > 0)
+            {
+                recipe = new Recipe(maxIngredients);
+                int selectedIndex = recipeListView.FocusedItem.Index;
+                Recipe selectedRecipe = recipeManger.GetRecipeAt(selectedIndex);
+                newRecipeNameTextBox.Text = selectedRecipe.Name;
+                newRecpieCategoryComboBox.SelectedIndex = (int)selectedRecipe.Category;
+                newRecipeDescriptionTextBox.Text = selectedRecipe.Description;
+                recipe.Ingredients = recipeManger.GetIngredients(selectedIndex);
             }
         }
     }

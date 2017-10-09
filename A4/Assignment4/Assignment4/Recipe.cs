@@ -196,7 +196,7 @@ namespace Assignment4
         /// Looking for occupied indexs and counting them through the whole array and returning that counted number
         /// </summary>
         /// <returns></returns>
-        public int countIngredients()
+        public int CountIngredients()
         {
             int count = 0;
 

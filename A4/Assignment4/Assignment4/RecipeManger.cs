@@ -55,7 +55,7 @@ namespace Assignment4
         /// <returns></returns>
         public bool ChangeRecipe(int index, Recipe recipe)
         {
-            if (CheckIndex(index))
+            if (CheckIndex(index) &&  recipe.CountIngredients() > 0)
             {
                 recipeList[index] = recipe;
                 return true;
@@ -131,22 +131,39 @@ namespace Assignment4
         }
 
         /// <summary>
-        /// returns how many recipes the recipeList can handle
-        /// </summary>
-        /// <returns></returns>
-        public int GetMaxRecipes()
-        {
-            return recipeList.Length;
-        }
-
-        /// <summary>
         /// returns a recipe from the recipeList with a specific index
         /// </summary>
         /// <param name="index"></param>
         /// <returns></returns>
         public Recipe GetRecipeAt(int index)
         {
-            return recipeList[index];
+            if (CheckIndex(index))
+            {
+                return recipeList[index];
+            }
+            return null;
+        }
+
+        /// <summary>
+        /// Creates a temp object of the recipe at the index from the parameter
+        /// Creates a new String array to store tempRecipe's ingredients
+        /// Then we just loop through the occupied index and sets the index in the string array to recipes ingredients index
+        /// Lastly we return the new array object
+        /// 
+        /// All this is done to prevent an overwrite of the recipe's ingredients
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
+        public String[] GetIngredients(int index)
+        {
+            Recipe tempRecipe = GetRecipeAt(index);
+            String[] tempArray = new String[tempRecipe.GetMaxIngredients()];
+
+            for (int i = 0; i < tempRecipe.CountIngredients(); i++)
+            {
+                tempArray[i] = tempRecipe.Ingredients[i];
+            }
+            return tempArray;
         }
     }
 }
