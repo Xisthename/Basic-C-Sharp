@@ -1,0 +1,10 @@
+c:\users\xisth\documents\visual studio 2015\Projects\Assignment6\Assignment6\bin\Debug\Assignment6.exe.config
+c:\users\xisth\documents\visual studio 2015\Projects\Assignment6\Assignment6\bin\Debug\Assignment6.exe
+c:\users\xisth\documents\visual studio 2015\Projects\Assignment6\Assignment6\bin\Debug\Assignment6.pdb
+c:\users\xisth\documents\visual studio 2015\Projects\Assignment6\Assignment6\obj\Debug\Assignment6.csprojResolveAssemblyReference.cache
+c:\users\xisth\documents\visual studio 2015\Projects\Assignment6\Assignment6\obj\Debug\Assignment6.MainForm.resources
+c:\users\xisth\documents\visual studio 2015\Projects\Assignment6\Assignment6\obj\Debug\Assignment6.Properties.Resources.resources
+c:\users\xisth\documents\visual studio 2015\Projects\Assignment6\Assignment6\obj\Debug\Assignment6.csproj.GenerateResource.Cache
+c:\users\xisth\documents\visual studio 2015\Projects\Assignment6\Assignment6\obj\Debug\Assignment6.exe
+c:\users\xisth\documents\visual studio 2015\Projects\Assignment6\Assignment6\obj\Debug\Assignment6.pdb
+C:\Users\xisth\Documents\Visual Studio 2015\Projects\Assignment6\Assignment6\obj\Debug\Assignment6.AboutBox.resources
