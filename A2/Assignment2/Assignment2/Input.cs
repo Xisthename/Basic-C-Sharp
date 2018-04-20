@@ -19,7 +19,7 @@ namespace Assignment2
 
         /// <summary>
         /// Trys to convert the input from the user to an int
-        /// If it succeeded the method returns the an int
+        /// If it succeeded the method returns the int
         /// It it fails it writes out the error message and does the same procedure all over again
         /// </summary>
         /// <returns></returns>
@@ -36,6 +36,16 @@ namespace Assignment2
                 Console.WriteLine(errorText);
                 return ReadIntegerConsole();
             }
+        }
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public int Temp()
+        {
+            return 5;
         }
 
         /// <summary>
